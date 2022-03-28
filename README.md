@@ -1,5 +1,7 @@
 # Network_intrusion_detection_system
 
+## MVP plan:
+
 Steps to perform intrusion detection at an end device on the network:
 1. Capture traffic at the end device.
 2. Run an intrusion detection system on the traffic captured in real-time.
