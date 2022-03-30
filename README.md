@@ -20,8 +20,9 @@ We can do either of the two-
 #### How do we capture incomming traffic at the end device?
 
 Two possible ways-
-1.We can use tshark to extract specific headers of packets arriving at the end device and write them into a csv file or a database.
-2.Use tcpdump to capture the traffic and extract the required fields using pyshark.
+
+1. We can use tshark to extract specific headers of packets arriving at the end device and write them into a csv file or a database.
+2. Use tcpdump to capture the traffic and extract the required fields using pyshark.
 
 #### But this tshark should be running all the time the end device is on. How do we ensure this?
 
