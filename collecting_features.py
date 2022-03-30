@@ -1,5 +1,5 @@
 import pyshark
-
+from  get_connection_status import get_connection_status
 # Read pcap file.
 input_file = 'sniff.pcap'
 captured_packets = pyshark.FileCapture(input_file)
@@ -23,18 +23,20 @@ for packet in captured_packets:
 #print(raw_connections.keys())
 
 # Got raw_connections dictionary.     
-
+protocol_type = 1 #code for tcp is taken as 1.
 for key, packet_list in raw_connections.items():
     src_bytes = 0
     dst_bytes = 0
     wrong_frag = 0   
-
+    duration = int(float(packet_list[-1].tcp.time_relative))
     if(hasattr(packet_list[0], 'ipv6')):
         src_ip = packet_list[0].ipv6.src
         dst_ip = packet_list[0].ipv6.dst
+        #status_flag = get_connection_status(packet_list)
     else:
         src_ip = packet_list[0].ip.src
         dst_ip = packet_list[0].ip.dst
+        #status_flag = get_connection_status(packet_list)
 
     for packet in packet_list:
         #print("length of packet is: " + packet.length.size)
@@ -48,7 +50,10 @@ for key, packet_list in raw_connections.items():
                 src_bytes += int(packet.length.size)
             else:
                 dst_bytes += int(packet.length.size)
+
+        if(packet.tcp.checksum_status != '2'):
+            wrong_frag += 1
         
     #print("src bytes of connection no: " + str(key) + " is: " + str(src_bytes))
     #print("dst bytes of connection no: " + str(key) + " is: " + str(dst_bytes))
-     
+
