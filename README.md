@@ -16,8 +16,10 @@ We need pre existing benign and harmful network traffic data to build our system
 We can do either of the two-
 1. Simulate a network and generate mock data ourselves by running attacks in the simulated network.
 2. Use open-sourced datasets:
-  a. [KDDCup99 dataset](http://kdd.ics.uci.edu/databases/kddcup99/task.html)
-  b. [AWID dataset](https://icsdweb.aegean.gr/awid/)
+
+    a. [KDDCup99 dataset](http://kdd.ics.uci.edu/databases/kddcup99/task.html)
+
+    b. [AWID dataset](https://icsdweb.aegean.gr/awid/)
 
 #### How do we capture incomming traffic at the end device?
 
