@@ -15,14 +15,16 @@ We need pre existing benign and harmful network traffic data to build our system
 
 We can do either of the two-
 1. Simulate a network and generate mock data ourselves by running attacks in the simulated network.
-2. Use open-sourced datasets.
+2. Use open-sourced datasets:
+  a. [KDDCup99 dataset](http://kdd.ics.uci.edu/databases/kddcup99/task.html)
+  b. [AWID dataset](https://icsdweb.aegean.gr/awid/)
 
 #### How do we capture incomming traffic at the end device?
 
 Two possible ways-
 
-1. We can use tshark to extract specific headers of packets arriving at the end device and write them into a csv file or a database.
-2. Use tcpdump to capture the traffic and extract the required fields using pyshark.
+1. We can use [tshark](https://www.wireshark.org/docs/man-pages/tshark.html) to extract specific headers of packets arriving at the end device and write them into a csv file or a database.
+2. Use [tcpdump](https://www.tcpdump.org/) to capture the traffic and extract the required fields using [pyshark](https://github.com/KimiNewt/pyshark).
 
 #### But this tshark should be running all the time the end device is on. How do we ensure this?
 
