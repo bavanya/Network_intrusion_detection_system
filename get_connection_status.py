@@ -18,14 +18,14 @@ def get_connection_status(packets):
             'S3': {('1', '0', '1', '0', '0'): 'SF'},
             'SF': {}}                 
     # Define source and destination
-    if(hasattr(packet_list[0], 'ipv6')):
+    if(hasattr(packets[0], 'ipv6')):
         source_ip = packets[0].ipv6.src
     else:
         source_ip = packets[0].ip.src
     connection_status = 'INIT'
 
     for packet in packets:
-        if(hasattr(packet_list[0], 'ipv6')):
+        if(hasattr(packets[0], 'ipv6')):
             if source_ip == packet.ipv6.src:
                 key = ('1', packet.tcp.flags_syn, packet.tcp.flags_ack, packet.tcp.flags_reset, packet.tcp.flags_fin)
             else:
