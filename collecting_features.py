@@ -1,6 +1,7 @@
 import pyshark
 from  get_connection_status import get_connection_status
 from get_network_service_at_dst import get_network_service_at_dst
+
 # Read pcap file.
 input_file = 'sniff.pcap'
 captured_packets = pyshark.FileCapture(input_file)
@@ -33,11 +34,9 @@ for key, packet_list in raw_connections.items():
     if(hasattr(packet_list[0], 'ipv6')):
         src_ip = packet_list[0].ipv6.src
         dst_ip = packet_list[0].ipv6.dst
-        #status_flag = get_connection_status(packet_list)
     else:
         src_ip = packet_list[0].ip.src
         dst_ip = packet_list[0].ip.dst
-        #status_flag = get_connection_status(packet_list)
 
     for packet in packet_list:
         #print("length of packet is: " + packet.length.size)
@@ -58,4 +57,4 @@ for key, packet_list in raw_connections.items():
     #print("src bytes of connection no: " + str(key) + " is: " + str(src_bytes))
     #print("dst bytes of connection no: " + str(key) + " is: " + str(dst_bytes))
     service = get_network_service_at_dst(packet_list[0])
-
+    status_flag = get_connection_status(packet_list)
