@@ -1,5 +1,6 @@
 import pyshark
 from  get_connection_status import get_connection_status
+from get_network_service_at_dst import get_network_service_at_dst
 # Read pcap file.
 input_file = 'sniff.pcap'
 captured_packets = pyshark.FileCapture(input_file)
@@ -56,4 +57,5 @@ for key, packet_list in raw_connections.items():
         
     #print("src bytes of connection no: " + str(key) + " is: " + str(src_bytes))
     #print("dst bytes of connection no: " + str(key) + " is: " + str(dst_bytes))
+    service = get_network_service_at_dst(packet_list[0])
 
