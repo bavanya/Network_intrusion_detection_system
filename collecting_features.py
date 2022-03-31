@@ -1,6 +1,21 @@
 import pyshark
 from  get_connection_status import get_connection_status
 from get_network_service_at_dst import get_network_service_at_dst
+from get_content_data import get_content_data
+
+dataset_records=[['src_bytes',
+ 'service',
+ 'protocol_type',
+ 'flag',
+ 'dst_bytes',
+ 'duration',
+ 'wrong_fragment',
+ 'num_failed_logins',
+ 'logged_in',
+ 'num_compromised',
+ 'logged_in',
+ 'is_guest_login'
+ ]]
 
 # Read pcap file.
 input_file = 'sniff.pcap'
@@ -67,4 +82,9 @@ for key, packet_list in raw_connections.items():
     packet_no = 1
     #print(str(packet_list[0].tcp))
 
-    #common_for_all_packets = [src_bytes, service, protocol_type, status_flag, dst_bytes, duration, wrong_frag]
+    features_of_a_tcp_connection = [src_bytes, service, protocol_type, status_flag, dst_bytes, duration, wrong_frag]
+    features_of_a_tcp_connection.extend(get_content_data(packet_list))
+    #print("features for connection: " + str(key) + " are:" + ' '.join(map(str, features_of_a_tcp_connection)))
+    
+    dataset_records.append(features_of_a_tcp_connection)
+    
