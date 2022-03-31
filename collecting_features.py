@@ -58,3 +58,13 @@ for key, packet_list in raw_connections.items():
     #print("dst bytes of connection no: " + str(key) + " is: " + str(dst_bytes))
     service = get_network_service_at_dst(packet_list[0])
     status_flag = get_connection_status(packet_list)
+
+    num_failed_logins = 0
+    logged_in = 0
+    num_compromised = 0
+    is_guest_login = 0
+
+    packet_no = 1
+    #print(str(packet_list[0].tcp))
+
+    #common_for_all_packets = [src_bytes, service, protocol_type, status_flag, dst_bytes, duration, wrong_frag]
